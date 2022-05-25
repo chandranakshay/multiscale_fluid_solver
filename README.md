@@ -8,4 +8,5 @@ Some portions of the code are SIMD vectorized and require avx support.
 Physical domain layout: The code is written only for the channel flow geometry (default setup: gravity driven flow) with the DSMC region restricted to tunable equal
 widths from either walls. The LB solver governs the rest of the domain.
 
-Running a simulation: requires you to setup nondimensional parameters, particle time scale ($\Delta t$), 
+Running a simulation: requires you to setup nondimensional parameters, number of DSMC cells and equivalent LB nodes in the domain, number of particles per cell, 
+the buffer layer distance, and curl-noise parameters (if required).
