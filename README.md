@@ -1,4 +1,4 @@
-# multiscale_solver
+# multiscale_fluid_solver
 Fluid kinetic multiscale solver
 
 This C++ code is a coupled version of the Lattice-Boltzmann (LB) RD3Q41 model and Direct Simulation Monte Carlo (DSMC) fluid solvers.
