@@ -463,7 +463,7 @@ int main(int argc, char *argv[])
     /*LBM initial conditions*/
     initializeMarker(marker,FLUID);
 
-    PANINI_REAL velScale = 0.*1.5;
+    PANINI_REAL velScale = 1.*1.5;
     initialConditions(lbModel41,gridLBM41,marker,VECT_LENGTH,uRef*velScale,FLUID,simParam.nP2,CartersianGrid3D.coordinates,p.density);
     //restartIC(lbModel41, gridLBM41,LBrestartFile);
     MPI_Barrier(MPI_COMM_WORLD);
