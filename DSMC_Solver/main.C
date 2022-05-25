@@ -140,12 +140,12 @@ void DSMCParameters(hardSphere<3,double,dofParticle<double> >& p,int myRank,doub
     p.vSound                 = sqrt(p.gamma*kT/(double)M);
     p.Uc                     = p.Mach*p.vSound;
     p.uWall		               = 0.;//p.Uc;
-    p.Kn                     = 1./40.;
+    p.Kn                     = 1./2400.;
     p.Re                     = 16.*p.Mach*sqrt(p.gamma)/(5.*sqrt(2.*pi)*p.Kn);
 
     double deltaZBymfp       = 1./(p.Kn*(double)(p.ZcellSize));
-    double deltaXBymfp       = 0.1*deltaZBymfp;
-    double deltaYBymfp       = 0.1*deltaZBymfp;
+    double deltaXBymfp       = 1.666667*deltaZBymfp;
+    double deltaYBymfp       = 5.*deltaZBymfp;
     double nParticlesPerCell = p.numParticlesPerCell;
     p.nE	             = 1.;
 
@@ -179,8 +179,8 @@ void DSMCParameters(hardSphere<3,double,dofParticle<double> >& p,int myRank,doub
 int main(int argc, char *argv[])
 {
     int rank, size;
-    /*Initialize DSMC solver*/
-    hardSphere<3,double,dofParticle<double> > p(40,400,40,2,5,2,100,4);
+    /*Initialize DSMC solver (spanwise total cells, streamwise tot cells, wall normal tot (virtual) cells, span procs, stream procs, wall procs, num particles per cell, num cells from wall)*/
+    hardSphere<3,double,dofParticle<double> > p(1200,720,1000,20,10,2,30,4);
     /*********************************/
     
     MPI_Init(&argc, &argv);
@@ -201,8 +201,8 @@ int main(int argc, char *argv[])
 
     int myRank;
     myRank = rank;
-    /*Initialize LB solver*/
-    latticeInfo simParam(8,20,2,5,2,2,2,2,2);
+    /*Initialize LB solver (streamwise cells per proc, wall cells per proc, spanwise cells per proc, stream procs, wall procs, span procs, stream ghost, wall ghost, span ghost)*/
+    latticeInfo simParam(72,100,20,10,2,20,2,2,2);
     /*******************************/
 
     /*LBM RD3Q41 grid initialization*/
