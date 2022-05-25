@@ -471,13 +471,13 @@ int main(int argc, char *argv[])
 
 
     /* Perlin based curl noise (uncomment only for initial noise in velocity field)*/
-    // PANINI_REAL normg;
-    // curl_noise(lbModel41, gridLBM41, simParam.nP1, simParam.nP2, simParam.nP3,
-    //          normg, CartersianGrid3D.coordinates, VECT_LENGTH, p.density, uRef*1.5);
-    // perturb_parab(CartersianGrid3D.coordinates, lbModel41, gridLBM41,
-    //             simParam.nP1, simParam.nP2, simParam.nP3, normg,
-    //             uRef*1.5, VECT_LENGTH, p.density, uRef*1.5);
-    // MPI_Barrier(MPI_COMM_WORLD);
+    PANINI_REAL normg;
+    curl_noise(lbModel41, gridLBM41, simParam.nP1, simParam.nP2, simParam.nP3,
+             normg, CartersianGrid3D.coordinates, VECT_LENGTH, p.density, uRef*1.5);
+    perturb_parab(CartersianGrid3D.coordinates, lbModel41, gridLBM41,
+                simParam.nP1, simParam.nP2, simParam.nP3, normg,
+                uRef*1.5, VECT_LENGTH, p.density, uRef*1.5);
+    MPI_Barrier(MPI_COMM_WORLD);
     /*******************************************************************************/
 
     simulationTime = int(1.1*convectionTime);
