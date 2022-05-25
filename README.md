@@ -9,4 +9,4 @@ Physical domain layout: The code is written only for the channel flow geometry (
 widths from either walls. The LB solver governs the rest of the domain.
 
 Running a simulation: requires you to setup nondimensional parameters, number of DSMC cells and equivalent LB nodes in the domain, number of particles per cell, 
-the buffer layer distance, and curl-noise parameters (if required).
+the buffer layer distance, and perlin-noise parameters (if required).
