@@ -179,7 +179,8 @@ void DSMCParameters(hardSphere<3,double,dofParticle<double> >& p,int myRank,doub
 int main(int argc, char *argv[])
 {
     int rank, size;
-    /*Initialize DSMC solver (spanwise total cells, streamwise tot cells, wall normal tot (virtual) cells, span procs, stream procs, wall procs, num particles per cell, num cells from wall)*/
+    /*Initialize DSMC solver (spanwise total cells, streamwise tot cells, wall normal tot (virtual) cells, span procs, stream procs, wall procs, 
+    num particles per cell, num cells from wall)*/
     hardSphere<3,double,dofParticle<double> > p(1200,720,1000,20,10,2,30,4);
     /*********************************/
     
@@ -201,7 +202,8 @@ int main(int argc, char *argv[])
 
     int myRank;
     myRank = rank;
-    /*Initialize LB solver (streamwise cells per proc, wall cells per proc, spanwise cells per proc, stream procs, wall procs, span procs, stream ghost, wall ghost, span ghost)*/
+    /*Initialize LB solver (streamwise cells per proc, wall cells per proc, spanwise cells per proc, stream procs, wall procs, span procs, 
+    stream ghost, wall ghost, span ghost)*/
     latticeInfo simParam(72,100,20,10,2,20,2,2,2);
     /*******************************/
 
