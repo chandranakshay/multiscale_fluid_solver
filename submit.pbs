@@ -1,0 +1,14 @@
+#!/bin/sh
+#SBATCH -N 10
+#SBATCH --ntasks-per-node=40
+#SBATCH --time=72:00:00
+#SBATCH --job-name=chRe800
+#SBATCH --error=job.%J.err
+#SBATCH --output=job.%J.out
+#SBATCH --partition=standard
+# Load your modules in the script.
+module load compiler/openmpi/3.1.5/gcc/9.3.0
+MACHINE_FILE=nodes.$SLURM_JOBID
+scontrol show hostname $SLURM_JOB_NODELIST > $MACHINE_FILE
+mpirun -machinefile $MACHINE_FILE -np 400 ./baseCoupled.out > output.dat
+
